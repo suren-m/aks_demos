@@ -9,7 +9,7 @@ r = redis.Redis(
     ssl=True
     )
 
-r.set('foo','demos')
+r.set('foo','demo again')
 
 print(r.get('foo'))
 
