@@ -1,0 +1,9 @@
+# namePrefix: contoso-
+commonLabels:
+  variant: contoso
+commonAnnotations:
+  note: This is for contoso demo cluster
+bases:
+- ../../base
+resources:
+- secret.yaml

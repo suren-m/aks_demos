@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: redistest
+  name: redistest
+  namespace: redisdemo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: redistest
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: redistest
+    spec:
+      containers:
+      - image: surenmcode/redistest:latest
+        name: redistest
+        command: ["pipenv"]
+        args: ["run", "main.py"]
+        resources: {}
+        env:
+        - name: CACHE_CRED
+          valueFrom:
+            secretKeyRef:
+              name: redis
+              key: cachekey
+status: {}
