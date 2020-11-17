@@ -1,4 +1,4 @@
-ns :='redisdemo'
+ns := 'redisdemo'
 
 all: cnidemo kubenetdemo cnidemo-calico
 

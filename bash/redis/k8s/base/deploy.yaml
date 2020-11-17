@@ -18,6 +18,8 @@ spec:
       labels:
         app: redisbench
     spec:
+      nodeSelector:
+        workloads: apps
       containers:
       - image: surenmcode/redisbench:1.0.9
         imagePullPolicy: Always
