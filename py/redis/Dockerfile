@@ -1,9 +1,8 @@
-FROM python:3.8.6-buster
+FROM redis:alpine
 WORKDIR /app
-RUN apt update -y && apt upgrade -y 
-RUN apt install python3-pip -y
-RUN apt install pipenv -y 
 COPY ./app .
-RUN pipenv install
-# RUN pipenv run python main.py
+RUN pip install -r requirements.txt
+# RUN pipenv install
+# RUN pipenv run python3 main.py
 
+ENTRYPOINT ["python3", "main.py"]

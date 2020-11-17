@@ -19,10 +19,8 @@ spec:
         app: redistest
     spec:
       containers:
-      - image: surenmcode/redistest:latest
-        name: redistest
-        command: ["pipenv"]
-        args: ["run", "main.py"]
+      - image: surenmcode/redistest:loop
+        name: redistest      
         resources: {}
         env:
         - name: CACHE_CRED
