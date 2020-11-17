@@ -1,6 +1,6 @@
 apiVersion: v1
 data:
-  cachehost: akscache
+  cachehost: cache3.redis.cache.windows.net
 kind: ConfigMap
 metadata:
   creationTimestamp: null

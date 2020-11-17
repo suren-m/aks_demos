@@ -1,6 +1,5 @@
 printf "Initializing..\n"
 
-CACHE_HOST="$CACHE_HOST.redis.cache.windows.net"
 PORT=6379
 
 ADDR="redis://$CACHE_KEY@$CACHE_HOST:$PORT"

@@ -1,10 +1,37 @@
 apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: redistest
+spec: {}
+status: {}
+---
+apiVersion: v1
+data:
+  cachehost: akscache.redis.cache.windows.net
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: redis
+  namespace: redistest
+---
+apiVersion: v1
+data:
+  cachekey: bVNkOG9sQUsyK2RLQTVlNXRzbGw2SUJMZ3psQldieWgrZVhpM0FIenplTT0=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: redis
+  namespace: redistest
+---
+apiVersion: v1
 kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: testpod
-  name: testpod
+    run: redistest
+  name: redistest
+  namespace: redistest
 spec:
   containers:
   - image: surenmcode/redisbench:1.0.8
