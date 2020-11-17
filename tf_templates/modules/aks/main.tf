@@ -9,6 +9,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   default_node_pool {
     name           = "default"
     node_count     = var.node_count
+    availability_zones = [ "1" ]
     vm_size        = var.vm_size
     vnet_subnet_id = var.vnet_subnet_id
 
@@ -54,4 +55,18 @@ resource "azurerm_kubernetes_cluster" "aks" {
       log_analytics_workspace_id = var.log_analytics_workspace_id
     }
   }  
+}
+
+resource "azurerm_kubernetes_cluster_node_pool" "aksworkloads" {
+  name                  = "aksworkloads"
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
+  vnet_subnet_id        = var.vnet_subnet_id
+  node_count            = var.node_count
+  availability_zones    = [ "1" ]
+  vm_size               = var.vm_size
+  os_type               = "Linux"
+  os_disk_size_gb       = "50"
+  enable_node_public_ip = false  
+
+  node_labels = var.user_workloads_node_labels
 }

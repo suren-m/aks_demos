@@ -24,13 +24,24 @@ variable vm_size {
 
 variable node_count {
     type = number
-    default = 2
+    default = 1
 }
 
 variable node_labels {
     type = map
     default = {
-    "provisioner" = "terraform"
+        "purpose" = "system_workloads"
+        "workloads" = "ops"
+        "provisioner" = "terraform"
+    }
+}
+
+variable user_workloads_node_labels {
+    type = map
+    default = {
+        "purpose" = "user_workloads"
+        "workloads" = "apps"
+        "provisioner" = "terraform"
     }
 }
 
