@@ -1,0 +1,13 @@
+# namePrefix: cnidemo-
+commonLabels:
+  variant: cnidemo
+commonAnnotations:
+  note: This is for cni demo cluster
+bases:
+- ../../base
+resources:
+- configmap.yaml
+- secret.yaml
+
+
+# kustomize build ~/someApp/overlays/production | kubectl apply -f -

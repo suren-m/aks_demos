@@ -1,0 +1,11 @@
+# namePrefix: kubenetdemo-
+commonLabels:
+  variant: kubenetdemo
+commonAnnotations:
+  note: This is for kubenet demo cluster
+bases:
+- ../../base
+resources:
+- configmap.yaml
+- secret.yaml
+

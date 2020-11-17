@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: redisbench
+  name: redisbench
+  namespace: redisdemo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redisbench
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: redisbench
+    spec:
+      containers:
+      - image: surenmcode/redisbench:1.0.8
+        imagePullPolicy: Always
+        name: redisbench      
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do ./init.sh; sleep 10; done"]
+        resources: {}
+        env:
+        - name: CACHE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: redis
+              key: cachehost
+        - name: CACHE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: redis
+              key: cachekey        
+status: {}

@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: testpod
+  name: testpod
+spec:
+  containers:
+  - image: surenmcode/redisbench:1.0.8
+    imagePullPolicy: Always
+    name: redisbench 
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do ./init.sh; sleep 10; done"]     
+    resources: {}
+    env:
+    - name: CACHE_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: redis
+          key: cachehost
+    - name: CACHE_KEY
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: cachekey
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always  
+status: {}
