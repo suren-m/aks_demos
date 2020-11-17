@@ -19,7 +19,7 @@ printf "Flushing keys.."
 redis-cli --no-auth-warning -u $ADDR -c "FLUSHALL"
 printf "\n"
 
-printf "Running redis-benchmark on $CACHE_HOST:$PORT..\n\n" | tee -a results
+printf "Running redis-benchmark on $CACHE_HOST:$PORT - $date\n\n" | tee -a results
 redis-benchmark \
 -h $CACHE_HOST \
 -p $PORT \

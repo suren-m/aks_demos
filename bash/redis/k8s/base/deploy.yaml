@@ -19,7 +19,7 @@ spec:
         app: redisbench
     spec:
       containers:
-      - image: surenmcode/redisbench:1.0.8
+      - image: surenmcode/redisbench:1.0.9
         imagePullPolicy: Always
         name: redisbench      
         command: ["/bin/sh"]
