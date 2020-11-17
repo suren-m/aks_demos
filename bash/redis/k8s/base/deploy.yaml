@@ -21,7 +21,7 @@ spec:
       nodeSelector:
         workloads: apps
       containers:
-      - image: surenmcode/redisbench:1.0.9
+      - image: surenmcode/redisbench:1.0.10
         imagePullPolicy: Always
         name: redisbench      
         command: ["/bin/sh"]
