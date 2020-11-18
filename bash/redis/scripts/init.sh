@@ -1,10 +1,12 @@
 printf "Initializing..\n"
 
+set -e
+
 PORT=6379
 
 ADDR="redis://$CACHE_KEY@$CACHE_HOST:$PORT"
 
-printf "Redis Info"
+printf "Redis Info\n"
 redis-cli --no-auth-warning -u $ADDR -c "INFO"
 
 printf "\n----\nHost Info: "
@@ -14,6 +16,9 @@ printf "\n\n"
 printf "Target DNS: "
 echo `dig +short $CACHE_HOST` | tr '\n' ' '
 printf "\n\n"
+
+printf "Latency Check"
+redis-cli --no-auth-warning --latency -u $ADDR
 
 printf "Flushing keys.."
 redis-cli --no-auth-warning -u $ADDR -c "FLUSHALL"

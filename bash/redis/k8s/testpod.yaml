@@ -2,43 +2,43 @@ apiVersion: v1
 kind: Namespace
 metadata:
   creationTimestamp: null
-  name: redistest
+  name: redisdemo
 spec: {}
 status: {}
 ---
 apiVersion: v1
 data:
-  cachehost: akscache.redis.cache.windows.net
+  cachehost: cache3.redis.cache.windows.net
 kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: redis
-  namespace: redistest
+  namespace: redisdemo
 ---
 apiVersion: v1
 data:
-  cachekey: ZjlOaE9XR3dDY2FCclgzNnpUWTN2cHpSR2NTaVViTkVaK2djVFRHNjIxMD0=
+  cachekey: Rzc4UWdPZlpRbUlxQkhFWm9rYVRXbWppRGhIRlVuYjZXU1E5SGVlZ3pOTT0= 
 kind: Secret
 metadata:
   creationTimestamp: null
   name: redis
-  namespace: redistest
+  namespace: redisdemo
 ---
 apiVersion: v1
 kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: redistest
-  name: redistest
-  namespace: redistest
+    run: testpod 
+  name: testpod
+  namespace: redisdemo
 spec:
   nodeSelector:
     workloads: apps
   containers:
-  - image: surenmcode/redisbench:1.0.10
+  - image: surenmcode/redisbench:1.0.12
     imagePullPolicy: Always
-    name: redisbench 
+    name: testpod 
     command: ["/bin/sh"]
     args: ["-c", "while true; do ./init.sh; sleep 10; done"]     
     resources: {}

@@ -1,15 +1,41 @@
 ns := 'redisdemo'
 
-all: cnidemo kubenetdemo cnidemo-calico
+deploy-all: cnidemo kubenetdemo cnidemo-calico
+
+all-results: cnidemo-results kubenetdemo-results cnidemo-calico-results
 
 cnidemo:
-	az aks get-credentials -n cnidemo -g demos
+	kubectl config use-context cnidemo
 	kubectl apply -k ./overlays/cnidemo
 
 kubenetdemo:
-	az aks get-credentials -n kubenetdemo -g demos
+	kubectl config use-context kubenetdemo
 	kubectl apply -k ./overlays/kubenetdemo
 
 cnidemo-calico:
-	az aks get-credentials -n cnidemo-calico -g demos
+	kubectl config use-context cnidemo-calico
 	kubectl apply -k ./overlays/cnidemo-calico
+
+cnidemo-results:
+	kubectl config use-context cnidemo
+	kubectl get pod -n redisdemo -o jsonpath={..metadata.name} | \
+		xargs -I podname \
+		kubectl cp \
+			redisdemo/podname:/scripts/results \
+			./results/cnidemo-results
+
+kubenetdemo-results:
+	kubectl config use-context kubenetdemo
+	kubectl get pod -n redisdemo -o jsonpath={..metadata.name} | \
+		xargs -I podname \
+		kubectl cp \
+			redisdemo/podname:/scripts/results \
+			./results/kubenetdemo-results
+
+cnidemo-calico-results:
+	kubectl config use-context cnidemo-calico
+	kubectl get pod -n redisdemo -o jsonpath={..metadata.name} | \
+		xargs -I podname \
+		kubectl cp \
+			redisdemo/podname:/scripts/results \
+			./results/cnidemo-calico-results
