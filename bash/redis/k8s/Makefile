@@ -20,7 +20,7 @@ cnidemo-results:
 	kubectl config use-context cnidemo
 	kubectl get pod -n redisdemo -o jsonpath={..metadata.name} | \
 		xargs -I podname \
-		kubectl cp \
+		kubectl cp -c redisbench \
 			redisdemo/podname:/scripts/results \
 			./results/cnidemo-results
 
@@ -28,7 +28,7 @@ kubenetdemo-results:
 	kubectl config use-context kubenetdemo
 	kubectl get pod -n redisdemo -o jsonpath={..metadata.name} | \
 		xargs -I podname \
-		kubectl cp \
+		kubectl cp -c redisbench \
 			redisdemo/podname:/scripts/results \
 			./results/kubenetdemo-results
 
@@ -36,7 +36,7 @@ cnidemo-calico-results:
 	kubectl config use-context cnidemo-calico
 	kubectl get pod -n redisdemo -o jsonpath={..metadata.name} | \
 		xargs -I podname \
-		kubectl cp \
+		kubectl cp -c redisbench \
 			redisdemo/podname:/scripts/results \
 			./results/cnidemo-calico-results
 

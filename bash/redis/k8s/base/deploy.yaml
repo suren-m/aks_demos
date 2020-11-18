@@ -37,5 +37,20 @@ spec:
           valueFrom:
             secretKeyRef:
               name: redis
-              key: cachekey        
+              key: cachekey
+      - image: surenmcode/redisbench:1.0.15
+        imagePullPolicy: Always
+        name: redislatency
+        resources: {}
+        env:
+        - name: CACHE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: redis
+              key: cachehost
+        - name: CACHE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: redis
+              key: cachekey                      
 status: {}
