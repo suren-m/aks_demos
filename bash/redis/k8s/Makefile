@@ -42,8 +42,8 @@ cnidemo-calico-results:
 
 delete-all:
 	kubectl config use-context cnidemo
-	kubectl delete ns redisdemo --force
+	kubectl delete ns redisdemo --ignore-not-found=true --force
 	kubectl config use-context kubenetdemo
-	kubectl delete ns redisdemo --force
+	kubectl delete ns redisdemo --ignore-not-found=true --force
 	kubectl config use-context cnidemo-calico
-	kubectl delete ns redisdemo --force
+	kubectl delete ns redisdemo --ignore-not-found=true --force
