@@ -17,9 +17,6 @@ printf "Target DNS: "
 echo `dig +short $CACHE_HOST` | tr '\n' ' '
 printf "\n\n"
 
-printf "Latency Check"
-redis-cli --no-auth-warning --latency -u $ADDR
-
 printf "Flushing keys.."
 redis-cli --no-auth-warning -u $ADDR -c "FLUSHALL"
 printf "\n"
