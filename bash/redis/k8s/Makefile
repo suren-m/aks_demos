@@ -47,3 +47,6 @@ delete-all:
 	kubectl delete ns redisdemo --ignore-not-found=true --force
 	kubectl config use-context cnidemo-calico
 	kubectl delete ns redisdemo --ignore-not-found=true --force
+
+logs:
+	kubectl logs deploy/redisbench -c redisbench -n redisdemo --follow
