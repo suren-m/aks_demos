@@ -39,3 +39,11 @@ cnidemo-calico-results:
 		kubectl cp \
 			redisdemo/podname:/scripts/results \
 			./results/cnidemo-calico-results
+
+delete-all:
+	kubectl config use-context cnidemo
+	kubectl delete ns redisdemo --force
+	kubectl config use-context kubenetdemo
+	kubectl delete ns redisdemo --force
+	kubectl config use-context cnidemo-calico
+	kubectl delete ns redisdemo --force
