@@ -21,6 +21,7 @@ printf "Flushing keys.."
 redis-cli --no-auth-warning -u $ADDR -c "FLUSHALL"
 printf "\n"
 
+# https://redis.io/topics/benchmarks
 printf "Running redis-benchmark on $CACHE_HOST:$PORT - `date`\n\n" | tee -a results
 redis-benchmark \
 -h $CACHE_HOST \

@@ -1,6 +1,6 @@
 OWNER := surenmcode
 REPO := redisbench
-VERSION := 1.0.15
+VERSION := 1.0.16
 OPV := $(OWNER)/$(REPO):$(VERSION)
 
 all: build launch

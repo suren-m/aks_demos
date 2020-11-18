@@ -21,7 +21,7 @@ spec:
       nodeSelector:
         workloads: apps
       containers:
-      - image: surenmcode/redisbench:1.0.10
+      - image: surenmcode/redisbench:1.0.16
         imagePullPolicy: Always
         name: redisbench      
         command: ["/bin/sh"]
@@ -38,7 +38,7 @@ spec:
             secretKeyRef:
               name: redis
               key: cachekey
-      - image: surenmcode/redisbench:1.0.15
+      - image: surenmcode/redisbench:1.0.16
         imagePullPolicy: Always
         name: redislatency
         resources: {}
