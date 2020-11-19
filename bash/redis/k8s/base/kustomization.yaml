@@ -5,4 +5,4 @@ resources:
   - namespace.yaml
   - deploy.yaml
   - networkpolicy.yaml
-  - web_pod.yaml
+  - web_pods.yaml
