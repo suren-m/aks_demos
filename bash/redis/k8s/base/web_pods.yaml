@@ -7,6 +7,8 @@ metadata:
   name: web1
   namespace: redisdemo
 spec:
+  nodeSelector:
+    workloads: apps
   containers:
   - image: nginx
     name: web1
@@ -24,6 +26,8 @@ metadata:
   name: web2
   namespace: redisdemo
 spec:
+  nodeSelector:
+    workloads: apps
   containers:
   - image: nginx
     name: web2
